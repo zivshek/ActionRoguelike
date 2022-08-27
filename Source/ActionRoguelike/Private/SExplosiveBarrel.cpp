@@ -23,7 +23,7 @@ ASExplosiveBarrel::ASExplosiveBarrel()
 
 void ASExplosiveBarrel::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	if (OtherActor->IsA(ASMagicProjectile::StaticClass()))
+	if (OtherActor->IsA(ASProjectileBase::StaticClass()))
 	{
 		ExplosionComp->FireImpulse();
 		UE_LOG(LogTemp, Log, TEXT("OnHit in Explosive Barrel"));

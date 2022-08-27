@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "SCharacter.generated.h"
 
+
 class UCameraComponent;
 class USpringArmComponent;
 class USInteractionComponent;
@@ -25,9 +26,11 @@ protected:
 
 	void MoveForward(float Value);
 	void MoveRight(float Value);
-    void PrimaryAttack_Delayed();
 	void PrimaryAttack();
+	void SecondaryAttack();
+	void TertiaryAttack();
 	void PrimaryInteract();
+	void SpawnProjectile(TSubclassOf<AActor> ProjectileClass);
 
 public:	
 	// Called every frame
@@ -44,7 +47,13 @@ protected:
 	USpringArmComponent* SpringArmComp;
 
 	UPROPERTY(EditAnywhere, Category = "Attack")
-	TSubclassOf<AActor> ProjectileClass;
+	TSubclassOf<AActor> PrimaryProjectileClass;
+
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	TSubclassOf<AActor> SecondaryProjectileClass;
+
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	TSubclassOf<AActor> TertiaryProjectileClass;
 
 	UPROPERTY(EditAnywhere, Category = "Attack")
 	UAnimMontage* AttackAnim;
@@ -52,5 +61,6 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	USInteractionComponent* InteractionComp;
 
-    FTimerHandle TimerHandle_PrimaryAttack;
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	float AimRange = 8000.0f;
 };

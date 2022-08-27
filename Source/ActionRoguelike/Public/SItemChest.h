@@ -7,6 +7,7 @@
 #include "SGameplayInterface.h"
 #include "SItemChest.generated.h"
 
+
 class UStaticMeshComponent;
 
 UCLASS()
@@ -32,7 +33,7 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* BaseMesh;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UStaticMeshComponent* LidMesh;
 
 private:
